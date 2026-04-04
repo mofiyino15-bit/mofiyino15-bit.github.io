@@ -6,7 +6,7 @@
 <title>Victory Owoeye — Creative Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,9 +18,9 @@
     --accent2: #f0c040;
     --mid: #2a2a2a;
     --muted: #888;
-    --font-display: 'Bebas Neue', sans-serif;
-    --font-serif: 'DM Serif Display', serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Anton', sans-serif;
+    --font-serif: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -130,8 +130,8 @@
   }
 
   h1 em {
-    font-family: var(--font-serif);
-    font-style: italic;
+    font-family: 'Anton', sans-serif;
+    font-style: normal;
     color: var(--accent2);
     font-size: 0.75em;
   }
@@ -243,8 +243,8 @@
   }
 
   h2 em {
-    font-family: var(--font-serif);
-    font-style: italic;
+    font-family: 'Anton', sans-serif;
+    font-style: normal;
     color: var(--accent2);
   }
 
@@ -335,123 +335,212 @@
 
   /* PORTFOLIO */
   #portfolio {
-    padding: 8rem 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 6rem 0 0;
   }
 
   .portfolio-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 0 3rem;
+  }
+
+  /* FULL-VIEWPORT PROJECT SECTIONS */
+  .project-section {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-section.flip { direction: rtl; }
+  .project-section.flip > * { direction: ltr; }
+
+  /* Visual panel */
+  .ps-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .ps-visual.c1 { background: #0e0e1f; }
+  .ps-visual.c2 { background: #1a0e00; }
+  .ps-visual.c3 { background: #081a08; }
+  .ps-visual.c4 { background: #16091a; }
+
+  .ps-bg-num {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: clamp(180px, 28vw, 400px);
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  .ps-placeholder {
+    width: 60%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.4s;
+  }
+
+  .project-section:hover .ps-placeholder { border-color: rgba(255,255,255,0.15); }
+
+  .ps-placeholder-label {
+    font-family: var(--font-display);
+    font-size: clamp(14px, 2vw, 22px);
+    letter-spacing: 0.25em;
+    color: rgba(255,255,255,0.12);
+    text-transform: uppercase;
+  }
+
+  .ps-accent-line {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--accent);
+    transition: width 0.5s ease;
+  }
+
+  .project-section:hover .ps-accent-line { width: 100%; }
+
+  /* Content panel */
+  .ps-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 5rem 5rem 4rem;
+    position: relative;
+    border-left: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .project-section.flip .ps-content {
+    border-left: none;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 5rem 4rem 5rem 5rem;
+  }
+
+  .ps-index {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: rgba(255,255,255,0.15);
+    margin-bottom: 1.5rem;
+  }
+
+  .ps-category {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ps-category::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .ps-title {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6.5vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    margin-bottom: 1.75rem;
+    transition: color 0.3s;
+  }
+
+  .project-section:hover .ps-title { color: var(--accent2); }
+
+  .ps-desc {
+    font-size: 0.95rem;
+    color: rgba(245,242,237,0.5);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+  }
+
+  .ps-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .ps-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.4);
+  }
+
+  .ps-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 400;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    width: fit-content;
+    transition: border-color 0.2s, gap 0.2s, color 0.2s;
+  }
+
+  .ps-cta:hover {
+    color: var(--accent2);
+    border-color: var(--accent2);
+    gap: 1.25rem;
+  }
+
+  .ps-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .portfolio-outro {
+    padding: 4rem 3rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 1.5rem;
   }
 
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-  }
-
-  .project-card {
-    background: var(--mid);
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s;
-  }
-
-  .project-card:hover { transform: translateY(-4px); }
-
-  .project-card.wide { grid-column: span 7; }
-  .project-card.tall { grid-column: span 5; }
-  .project-card.half { grid-column: span 6; }
-  .project-card.third { grid-column: span 4; }
-
-  .project-thumb {
-    width: 100%;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: clamp(28px, 4vw, 52px);
-    letter-spacing: 0.05em;
-    color: rgba(255,255,255,0.12);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-thumb.c1 { background: #1a1a2e; }
-  .project-thumb.c2 { background: #1c0f00; }
-  .project-thumb.c3 { background: #0d1f0d; }
-  .project-thumb.c4 { background: #1f0d1a; }
-  .project-thumb.c5 { background: #0d1a1f; }
-
-  .project-thumb-icon {
-    position: absolute;
-    font-size: clamp(48px, 8vw, 100px);
-    opacity: 0.15;
-  }
-
-  .project-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(232, 80, 26, 0.9);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-    text-align: center;
-    padding: 1.5rem;
-  }
-
-  .project-card:hover .project-overlay { opacity: 1; }
-
-  .overlay-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    font-weight: 300;
-  }
-
-  .overlay-title {
-    font-family: var(--font-display);
-    font-size: clamp(22px, 3vw, 36px);
-    line-height: 1;
-  }
-
-  .project-info {
-    padding: 1.25rem 1.5rem;
-  }
-
-  .project-info h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-  }
-
-  .project-tag {
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-weight: 300;
-    letter-spacing: 0.05em;
-  }
-
-  .coming-soon {
-    display: inline-block;
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 0.6rem 1.2rem;
-    font-size: 0.7rem;
+  .portfolio-outro p {
+    font-size: 0.8rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 3rem;
   }
 
   /* CONTACT */
@@ -633,12 +722,14 @@
 
     .services-grid { grid-template-columns: 1fr; }
 
-    #portfolio { padding: 5rem 1.5rem; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .project-card.wide,
-    .project-card.tall,
-    .project-card.half,
-    .project-card.third { grid-column: span 2; }
+    #portfolio { padding: 4rem 0 0; }
+    .portfolio-header { padding: 0 1.5rem; margin-bottom: 3rem; }
+    .project-section { grid-template-columns: 1fr; min-height: auto; }
+    .project-section.flip { direction: ltr; }
+    .ps-visual { min-height: 55vw; }
+    .ps-content { padding: 3rem 1.5rem; border-left: none !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.05); }
+    .project-section.flip .ps-content { padding: 3rem 1.5rem; }
+    .portfolio-outro { padding: 2.5rem 1.5rem 4rem; }
 
     .contact-inner {
       grid-template-columns: 1fr;
@@ -652,11 +743,6 @@
 
   @media (max-width: 500px) {
     nav ul { display: none; }
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .project-card.wide,
-    .project-card.tall,
-    .project-card.half,
-    .project-card.third { grid-column: span 1; }
   }
 </style>
 </head>
@@ -742,76 +828,112 @@
   <div class="portfolio-header fade-up">
     <div>
       <div class="section-label">Selected Work</div>
-      <h2>MY <em>Projects</em></h2>
+      <h2>MY PROJECTS</h2>
     </div>
     <a href="#contact" class="btn-ghost">Start a Project</a>
   </div>
 
-  <div class="portfolio-grid fade-up">
-
-    <div class="project-card wide">
-      <div class="project-thumb c1">
-        <span class="project-thumb-icon">◈</span>
-        BRAND
+  <!-- PROJECT 01 -->
+  <div class="ps-divider"></div>
+  <div class="project-section fade-up">
+    <div class="ps-visual c1">
+      <div class="ps-bg-num">01</div>
+      <div class="ps-placeholder">
+        <span class="ps-placeholder-label">Your Image Here</span>
       </div>
-      <div class="project-overlay">
-        <div class="overlay-label">Brand Identity</div>
-        <div class="overlay-title">Project One</div>
-      </div>
-      <div class="project-info">
-        <h3>Project One</h3>
-        <div class="project-tag">Brand Identity · Logo · Brand Kit</div>
-      </div>
+      <div class="ps-accent-line"></div>
     </div>
-
-    <div class="project-card tall">
-      <div class="project-thumb c2">
-        <span class="project-thumb-icon">✦</span>
-        MOTION
+    <div class="ps-content">
+      <div class="ps-index">01 / 04</div>
+      <div class="ps-category">Brand Identity</div>
+      <div class="ps-title">PROJECT ONE</div>
+      <p class="ps-desc">A full branding project — from initial concept through logo design to a complete brand kit ready to scale in the real world.</p>
+      <div class="ps-tags">
+        <span class="ps-tag">Logo Design</span>
+        <span class="ps-tag">Brand Kit</span>
+        <span class="ps-tag">Visual Identity</span>
       </div>
-      <div class="project-overlay">
-        <div class="overlay-label">Motion Graphics</div>
-        <div class="overlay-title">Project Two</div>
-      </div>
-      <div class="project-info">
-        <h3>Project Two</h3>
-        <div class="project-tag">Motion Graphics · Animation</div>
-      </div>
+      <a href="#contact" class="ps-cta">View Project &nbsp;→</a>
     </div>
-
-    <div class="project-card half">
-      <div class="project-thumb c3">
-        <span class="project-thumb-icon">⬡</span>
-        ILLUS
-      </div>
-      <div class="project-overlay">
-        <div class="overlay-label">Illustration</div>
-        <div class="overlay-title">Project Three</div>
-      </div>
-      <div class="project-info">
-        <h3>Project Three</h3>
-        <div class="project-tag">Illustration · Digital Art</div>
-      </div>
-    </div>
-
-    <div class="project-card half">
-      <div class="project-thumb c4">
-        <span class="project-thumb-icon">⬢</span>
-        DESIGN
-      </div>
-      <div class="project-overlay">
-        <div class="overlay-label">Graphic Design</div>
-        <div class="overlay-title">Project Four</div>
-      </div>
-      <div class="project-info">
-        <h3>Project Four</h3>
-        <div class="project-tag">Graphic Design · Print</div>
-      </div>
-    </div>
-
   </div>
 
-  <div class="coming-soon">More projects coming soon</div>
+  <!-- PROJECT 02 -->
+  <div class="ps-divider"></div>
+  <div class="project-section flip fade-up">
+    <div class="ps-visual c2">
+      <div class="ps-bg-num">02</div>
+      <div class="ps-placeholder">
+        <span class="ps-placeholder-label">Your Image Here</span>
+      </div>
+      <div class="ps-accent-line"></div>
+    </div>
+    <div class="ps-content">
+      <div class="ps-index">02 / 04</div>
+      <div class="ps-category">Motion Graphics</div>
+      <div class="ps-title">PROJECT TWO</div>
+      <p class="ps-desc">Animated visuals that bring a still identity to life — crafted to hold attention and tell a story in motion.</p>
+      <div class="ps-tags">
+        <span class="ps-tag">Animation</span>
+        <span class="ps-tag">Motion Design</span>
+        <span class="ps-tag">After Effects</span>
+      </div>
+      <a href="#contact" class="ps-cta">View Project &nbsp;→</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 03 -->
+  <div class="ps-divider"></div>
+  <div class="project-section fade-up">
+    <div class="ps-visual c3">
+      <div class="ps-bg-num">03</div>
+      <div class="ps-placeholder">
+        <span class="ps-placeholder-label">Your Image Here</span>
+      </div>
+      <div class="ps-accent-line"></div>
+    </div>
+    <div class="ps-content">
+      <div class="ps-index">03 / 04</div>
+      <div class="ps-category">Illustration</div>
+      <div class="ps-title">PROJECT THREE</div>
+      <p class="ps-desc">Original illustrations that give an idea a distinctive visual language — expressive, purposeful, and memorable.</p>
+      <div class="ps-tags">
+        <span class="ps-tag">Digital Art</span>
+        <span class="ps-tag">Illustration</span>
+        <span class="ps-tag">Character Design</span>
+      </div>
+      <a href="#contact" class="ps-cta">View Project &nbsp;→</a>
+    </div>
+  </div>
+
+  <!-- PROJECT 04 -->
+  <div class="ps-divider"></div>
+  <div class="project-section flip fade-up">
+    <div class="ps-visual c4">
+      <div class="ps-bg-num">04</div>
+      <div class="ps-placeholder">
+        <span class="ps-placeholder-label">Your Image Here</span>
+      </div>
+      <div class="ps-accent-line"></div>
+    </div>
+    <div class="ps-content">
+      <div class="ps-index">04 / 04</div>
+      <div class="ps-category">Graphic Design</div>
+      <div class="ps-title">PROJECT FOUR</div>
+      <p class="ps-desc">Layouts and compositions crafted to communicate clearly — designed to look great and work in the real world.</p>
+      <div class="ps-tags">
+        <span class="ps-tag">Print Design</span>
+        <span class="ps-tag">Layout</span>
+        <span class="ps-tag">Typography</span>
+      </div>
+      <a href="#contact" class="ps-cta">View Project &nbsp;→</a>
+    </div>
+  </div>
+
+  <div class="ps-divider"></div>
+  <div class="portfolio-outro fade-up">
+    <p>More projects coming soon</p>
+    <a href="#contact" class="btn-primary">Work With Me</a>
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -819,12 +941,12 @@
   <div class="contact-inner">
     <div class="fade-up">
       <div class="section-label">Get In Touch</div>
-      <h2>LET'S<br>BUILD<br><em>Something</em></h2>
+      <h2>LET'S<br>BUILD<br><em>SOMETHING</em></h2>
       <p class="contact-text">Have a project in mind? Let's talk about it — from the first idea to the final design.</p>
       <div class="contact-detail">
         <div class="contact-item">
           <span class="contact-item-label">Email</span>
-          <a href="mailto:fiyiin@yahoo.com" class="contact-item-value">fiyiin@yahoo.com</a>
+          <a href="/cdn-cgi/l/email-protection#bfd9d6c6d6d6d1ffc6ded7d0d091dcd0d2" class="contact-item-value"><span class="__cf_email__" data-cfemail="05636c7c6c6c6b457c646d6a6a2b666a68">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <span class="contact-item-label">Phone / WhatsApp</span>
@@ -873,7 +995,7 @@
   <p>© 2025 Victory Owoeye. All rights reserved.</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Fade-up on scroll
   const fadeEls = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
@@ -882,16 +1004,10 @@
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05 });
   fadeEls.forEach(el => observer.observe(el));
 
   // Contact form mock handler
   function handleSubmit(e) {
     e.preventDefault();
-    const msg = document.getElementById('form-msg');
-    msg.style.display = 'block';
-    msg.textContent = "Thanks! This form needs a backend to send emails — for now, reach me directly at fiyiin@yahoo.com.";
-  }
-</script>
-</body>
-</html>
+    c
