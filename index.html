@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victory Owoeye — Creative Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --accent: #e8501a;
+    --accent2: #f0c040;
+    --mid: #2a2a2a;
+    --muted: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: var(--white); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(140px, 22vw, 320px);
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: -0.02em;
+    user-select: none;
+  }
+
+  .hero-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 11vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 0.01em;
+    margin-bottom: 2rem;
+  }
+
+  h1 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent2);
+    font-size: 0.75em;
+  }
+
+  .hero-sub {
+    max-width: 520px;
+    color: rgba(245,242,237,0.6);
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.85rem 2.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: #c73e10; transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.85rem 2.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 300;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--white); }
+
+  .hero-scroll {
+    position: absolute;
+    right: 3rem;
+    bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 4rem;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 8rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .about-text {
+    color: rgba(245,242,237,0.7);
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.75rem;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3rem;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+
+  .service-card:hover { border-color: rgba(255,255,255,0.2); }
+  .service-card:hover::before { width: 100%; }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* DIVIDER */
+  .marquee-strip {
+    background: var(--accent);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 18s linear infinite;
+    gap: 3rem;
+  }
+
+  .marquee-inner span {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+  }
+
+  .marquee-inner .dot {
+    color: rgba(255,255,255,0.5);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* PORTFOLIO */
+  #portfolio {
+    padding: 8rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--mid);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover { transform: translateY(-4px); }
+
+  .project-card.wide { grid-column: span 7; }
+  .project-card.tall { grid-column: span 5; }
+  .project-card.half { grid-column: span 6; }
+  .project-card.third { grid-column: span 4; }
+
+  .project-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 52px);
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-thumb.c1 { background: #1a1a2e; }
+  .project-thumb.c2 { background: #1c0f00; }
+  .project-thumb.c3 { background: #0d1f0d; }
+  .project-thumb.c4 { background: #1f0d1a; }
+  .project-thumb.c5 { background: #0d1a1f; }
+
+  .project-thumb-icon {
+    position: absolute;
+    font-size: clamp(48px, 8vw, 100px);
+    opacity: 0.15;
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(232, 80, 26, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .project-card:hover .project-overlay { opacity: 1; }
+
+  .overlay-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+  }
+
+  .overlay-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 36px);
+    line-height: 1;
+  }
+
+  .project-info {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .project-info h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .project-tag {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .coming-soon {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 3rem;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--white);
+    color: var(--black);
+    padding: 8rem 3rem;
+  }
+
+  .contact-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  #contact .section-label {
+    color: var(--accent);
+  }
+
+  #contact .section-label::before { background: var(--accent); }
+
+  #contact h2 {
+    color: var(--black);
+  }
+
+  #contact h2 em { color: var(--accent); }
+
+  .contact-text {
+    color: #444;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .contact-item-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 300;
+  }
+
+  .contact-item-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .contact-item-value:hover { color: var(--accent); }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    font-weight: 300;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    padding: 0.65rem 0;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+
+  .form-group textarea { resize: none; height: 80px; }
+
+  .btn-submit {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+
+  .btn-submit:hover { background: var(--accent); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  footer p {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { gap: 1.5rem; }
+
+    #hero { padding: 0 1.5rem 4rem; }
+    .hero-scroll { display: none; }
+
+    #about {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 5rem 1.5rem;
+    }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    #portfolio { padding: 5rem 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .project-card.wide,
+    .project-card.tall,
+    .project-card.half,
+    .project-card.third { grid-column: span 2; }
+
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    #contact { padding: 5rem 1.5rem; }
+
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 500px) {
+    nav ul { display: none; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .project-card.wide,
+    .project-card.tall,
+    .project-card.half,
+    .project-card.third { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">V<span>.</span>O</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">VICTORY</div>
+  <div class="hero-tag">Creative Designer — Lagos, NG</div>
+  <h1>VICTORY<br><em>Owoeye</em></h1>
+  <p class="hero-sub">Taking ideas from concept to clarity — then building the design that brings them to life.</p>
+  <div class="hero-cta">
+    <a href="#portfolio" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-ghost">Get In Touch</a>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Illustration</span><span class="dot">·</span>
+    <span>Graphic Design</span><span class="dot">·</span>
+    <span>Motion Graphics</span><span class="dot">·</span>
+    <span>Brand Identity</span><span class="dot">·</span>
+    <span>Logo Design</span><span class="dot">·</span>
+    <span>Brand Kits</span><span class="dot">·</span>
+    <span>Illustration</span><span class="dot">·</span>
+    <span>Graphic Design</span><span class="dot">·</span>
+    <span>Motion Graphics</span><span class="dot">·</span>
+    <span>Brand Identity</span><span class="dot">·</span>
+    <span>Logo Design</span><span class="dot">·</span>
+    <span>Brand Kits</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="fade-up">
+    <div class="section-label">About Me</div>
+    <h2>DESIGN<br>WITH <em>Purpose</em></h2>
+    <p class="about-text">
+      My approach is simple: I take ideas and develop them until they're clear enough to be seen and understood. Once that clarity is there, my job is to turn it into a design that works in real life.<br><br>
+      I make sure what's built reflects what the client had in mind, while also making practical and design sense.
+    </p>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-name">Illustration</div>
+      <div class="service-desc">Original artwork that gives ideas a visual language — distinctive, expressive, memorable.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-name">Graphic Design</div>
+      <div class="service-desc">Layouts, visuals, and compositions crafted to communicate clearly and look great.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-name">Motion Graphics</div>
+      <div class="service-desc">Bringing still designs to life — animated visuals that hold attention and tell stories.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-name">Brand Identity</div>
+      <div class="service-desc">Full branding pipeline from logo creation to a complete brand kit that scales.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header fade-up">
+    <div>
+      <div class="section-label">Selected Work</div>
+      <h2>MY <em>Projects</em></h2>
+    </div>
+    <a href="#contact" class="btn-ghost">Start a Project</a>
+  </div>
+
+  <div class="portfolio-grid fade-up">
+
+    <div class="project-card wide">
+      <div class="project-thumb c1">
+        <span class="project-thumb-icon">◈</span>
+        BRAND
+      </div>
+      <div class="project-overlay">
+        <div class="overlay-label">Brand Identity</div>
+        <div class="overlay-title">Project One</div>
+      </div>
+      <div class="project-info">
+        <h3>Project One</h3>
+        <div class="project-tag">Brand Identity · Logo · Brand Kit</div>
+      </div>
+    </div>
+
+    <div class="project-card tall">
+      <div class="project-thumb c2">
+        <span class="project-thumb-icon">✦</span>
+        MOTION
+      </div>
+      <div class="project-overlay">
+        <div class="overlay-label">Motion Graphics</div>
+        <div class="overlay-title">Project Two</div>
+      </div>
+      <div class="project-info">
+        <h3>Project Two</h3>
+        <div class="project-tag">Motion Graphics · Animation</div>
+      </div>
+    </div>
+
+    <div class="project-card half">
+      <div class="project-thumb c3">
+        <span class="project-thumb-icon">⬡</span>
+        ILLUS
+      </div>
+      <div class="project-overlay">
+        <div class="overlay-label">Illustration</div>
+        <div class="overlay-title">Project Three</div>
+      </div>
+      <div class="project-info">
+        <h3>Project Three</h3>
+        <div class="project-tag">Illustration · Digital Art</div>
+      </div>
+    </div>
+
+    <div class="project-card half">
+      <div class="project-thumb c4">
+        <span class="project-thumb-icon">⬢</span>
+        DESIGN
+      </div>
+      <div class="project-overlay">
+        <div class="overlay-label">Graphic Design</div>
+        <div class="overlay-title">Project Four</div>
+      </div>
+      <div class="project-info">
+        <h3>Project Four</h3>
+        <div class="project-tag">Graphic Design · Print</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="coming-soon">More projects coming soon</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fade-up">
+      <div class="section-label">Get In Touch</div>
+      <h2>LET'S<br>BUILD<br><em>Something</em></h2>
+      <p class="contact-text">Have a project in mind? Let's talk about it — from the first idea to the final design.</p>
+      <div class="contact-detail">
+        <div class="contact-item">
+          <span class="contact-item-label">Email</span>
+          <a href="mailto:fiyiin@yahoo.com" class="contact-item-value">fiyiin@yahoo.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">Phone / WhatsApp</span>
+          <a href="tel:+2349055008396" class="contact-item-value">+234 905 500 8396</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item-label">Based In</span>
+          <span class="contact-item-value" style="cursor:default;">Lagos, Nigeria</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="John Doe" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="john@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service</option>
+          <option>Illustration</option>
+          <option>Graphic Design</option>
+          <option>Motion Graphics</option>
+          <option>Brand Identity / Full Branding</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell me about your project</label>
+        <textarea placeholder="Briefly describe your idea or project..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Message</button>
+      <p id="form-msg" style="font-size:0.85rem;color:#e8501a;display:none;margin-top:0.5rem;"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#hero" class="footer-logo">VICTORY<span>.</span></a>
+  <p>© 2025 Victory Owoeye. All rights reserved.</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Contact form mock handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    msg.textContent = "Thanks! This form needs a backend to send emails — for now, reach me directly at fiyiin@yahoo.com.";
+  }
+</script>
+</body>
+</html>
