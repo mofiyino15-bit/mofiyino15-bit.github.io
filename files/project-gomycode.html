@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoMyCode — Victory Owoeye</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0a0a0a; --white: #f5f2ed; --accent: #e8501a; --accent2: #f0c040;
+    --mid: #161616; --muted: #888;
+    --font-display: 'Anton', sans-serif; --font-body: 'Poppins', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(10,10,10,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-back { display: flex; align-items: center; gap: 0.6rem; color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 300; transition: color 0.2s; }
+  .nav-back:hover { color: var(--white); }
+
+  .proj-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 5rem; position: relative; overflow: hidden; background: #0a120a; }
+  .proj-hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-display); font-size: clamp(60px, 10vw, 160px); color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: 0.02em; }
+  .proj-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 300; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .proj-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
+  .proj-hero h1 { font-family: var(--font-display); font-size: clamp(52px, 9vw, 130px); line-height: 0.9; letter-spacing: 0.01em; margin-bottom: 1.5rem; }
+  .proj-hero-sub { max-width: 560px; color: rgba(245,242,237,0.5); font-size: 1rem; font-weight: 300; line-height: 1.85; }
+  .proj-hero-meta { position: absolute; right: 3rem; bottom: 5rem; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
+  .proj-meta-item { text-align: right; }
+  .proj-meta-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .proj-meta-value { font-size: 0.88rem; font-weight: 500; }
+
+  .accent-bar { width: 100%; height: 3px; background: var(--accent); }
+
+  .proj-body { max-width: 1100px; margin: 0 auto; padding: 7rem 3rem; }
+
+  .img-placeholder { width: 100%; background: #161616; border: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.18); font-weight: 300; }
+  .img-placeholder.tall { aspect-ratio: 4/3; }
+  .img-placeholder.wide { aspect-ratio: 16/7; }
+
+  .proj-overview { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; margin-bottom: 7rem; }
+  .proj-overview-left { position: sticky; top: 6rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 300; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .section-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
+  h2 { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.5rem; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .proj-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.35); }
+  .body-text { font-size: 0.98rem; color: rgba(245,242,237,0.62); font-weight: 300; line-height: 1.9; }
+  .body-text p + p { margin-top: 1.25rem; }
+
+  .pullquote { border-left: 3px solid var(--accent); padding: 1.5rem 2rem; margin: 3.5rem 0; background: rgba(232,80,26,0.04); }
+  .pullquote p { font-family: var(--font-display); font-size: clamp(18px, 2.8vw, 30px); line-height: 1.25; color: var(--white); letter-spacing: 0.02em; }
+
+  .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 4rem 0; }
+  .img-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin: 4rem 0; }
+  .img-full { margin: 4rem 0; }
+
+  .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 2.5rem 0; }
+  .pillar-card { padding: 2rem; background: #111; border: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden; transition: border-color 0.3s; }
+  .pillar-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent2); transition: width 0.4s; }
+  .pillar-card:hover { border-color: rgba(255,255,255,0.12); }
+  .pillar-card:hover::after { width: 100%; }
+  .pillar-card h4 { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.06em; color: var(--accent2); margin-bottom: 0.6rem; }
+  .pillar-card p { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.65; }
+
+  .section-divider { width: 100%; height: 1px; background: rgba(255,255,255,0.06); margin: 6rem 0; }
+
+  .next-project { background: #111; padding: 5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .next-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+  .next-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); line-height: 1; transition: color 0.3s; }
+  .next-link { text-decoration: none; color: var(--white); }
+  .next-link:hover .next-title { color: var(--accent2); }
+  .next-arrow { font-size: 2.5rem; color: var(--accent); }
+
+  footer { background: var(--black); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .footer-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  footer p { color: var(--muted); font-size: 0.8rem; font-weight: 300; }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .proj-hero { padding: 0 1.5rem 4rem; }
+    .proj-hero-meta { display: none; }
+    .proj-body { padding: 4rem 1.5rem; }
+    .proj-overview { grid-template-columns: 1fr; gap: 2.5rem; }
+    .proj-overview-left { position: static; }
+    .img-grid-2 { grid-template-columns: 1fr; }
+    .img-grid-3 { grid-template-columns: 1fr 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .next-project { padding: 3rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+  @media (max-width: 500px) { .img-grid-3 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">V<span>.</span>O</a>
+  <a href="index.html#portfolio" class="nav-back">← All Projects</a>
+</nav>
+
+<section class="proj-hero">
+  <div class="proj-hero-bg">GOMYCODE</div>
+  <div class="proj-eyebrow">Graphic Design · Content Strategy</div>
+  <h1>GOMYCODE</h1>
+  <p class="proj-hero-sub">A strategic content evolution built on hierarchy, consistency, and seasonal flexibility — extending an existing brand system without compromising recognition.</p>
+  <div class="proj-hero-meta">
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Type</div>
+      <div class="proj-meta-value">Brand Extension</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Focus</div>
+      <div class="proj-meta-value">Digital Content Design</div>
+    </div>
+    <div class="proj-meta-item">
+      <div class="proj-meta-label">Goal</div>
+      <div class="proj-meta-value">Scroll-Stopping Power</div>
+    </div>
+  </div>
+</section>
+
+<div class="accent-bar"></div>
+
+<div class="proj-body">
+
+  <div class="proj-overview fade-up">
+    <div class="proj-overview-left">
+      <div class="section-label">Overview</div>
+      <h2>EVOLVING AN EXISTING BRAND</h2>
+      <div class="proj-tags">
+        <span class="proj-tag">Graphic Design</span>
+        <span class="proj-tag">Content Strategy</span>
+        <span class="proj-tag">Brand Extension</span>
+        <span class="proj-tag">Digital</span>
+      </div>
+    </div>
+    <div class="body-text">
+      <p>GoMyCode is a brand with an already established identity system. This project was not about starting from scratch — it was about understanding what was already working, and pushing it further.</p>
+      <p>Through research and visual analysis, it became clear that the brand's strongest recognition assets were not fixed color usage alone, but rather a set of flexible, compounding principles that gave the identity a built-in elasticity.</p>
+      <p>My role was to push this system further by introducing high-impact backgrounds and punchy headline treatments designed specifically to increase scroll-stopping power across digital touchpoints.</p>
+    </div>
+  </div>
+
+  <div class="img-full fade-up">
+    <div class="img-placeholder wide">Campaign Overview — Image Coming Soon</div>
+  </div>
+
+  <div class="pullquote fade-up">
+    <p>An existing brand system made more commercially effective without compromising recognition.</p>
+  </div>
+
+  <div class="fade-up">
+    <div class="section-label">Recognition Assets</div>
+    <h2>WHAT MAKES THE BRAND ELASTIC</h2>
+  </div>
+
+  <div class="pillars fade-up">
+    <div class="pillar-card">
+      <h4>SEASONAL COLOR ADAPTATION</h4>
+      <p>Flexible color usage that allows the brand to shift its visual expression across campaigns and seasons while maintaining core recognition.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>TYPOGRAPHIC HIERARCHY</h4>
+      <p>Strong headline treatments that establish a clear visual reading order — the eye knows where to go and in what sequence.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>LOGO REPETITION</h4>
+      <p>Consistent placement and sizing of the logo across all content, building familiarity and reinforcing brand ownership at every touchpoint.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>STABLE COMPOSITION LOGIC</h4>
+      <p>A shared layout grammar across all content types — so different campaigns feel unified even when visually varied.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="fade-up">
+    <div class="section-label">The Work</div>
+    <h2>THE EXTENDED SYSTEM</h2>
+  </div>
+
+  <div class="img-grid-2 fade-up">
+    <div class="img-placeholder tall">Campaign Post — Image Coming Soon</div>
+    <div class="img-placeholder tall">Headline Treatment — Image Coming Soon</div>
+    <div class="img-placeholder tall">Seasonal Variant — Image Coming Soon</div>
+    <div class="img-placeholder tall">Digital Banner — Image Coming Soon</div>
+  </div>
+
+  <div class="img-grid-3 fade-up">
+    <div class="img-placeholder tall">Story Format — Image Coming Soon</div>
+    <div class="img-placeholder tall">Feed Post — Image Coming Soon</div>
+    <div class="img-placeholder tall">Campaign Suite — Image Coming Soon</div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <div class="proj-overview fade-up">
+    <div class="proj-overview-left">
+      <div class="section-label">The Result</div>
+      <h2>RECOGNITION PRESERVED. IMPACT INCREASED.</h2>
+    </div>
+    <div class="body-text">
+      <p>The strongest part of this case study is that the extension still respects the original identity rules. Nothing was discarded. Everything was amplified.</p>
+      <p>Most importantly, it demonstrated how an existing brand system can be made more commercially effective without compromising recognition. The identity became sharper, more scroll-stopping, and more strategically aligned — while remaining unmistakably GoMyCode.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="next-project">
+  <div>
+    <div class="next-label">Next Project</div>
+    <a href="project-bumpa.html" class="next-link"><div class="next-title">BUMPA.</div></a>
+  </div>
+  <a href="project-bumpa.html" class="next-link"><div class="next-arrow">→</div></a>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">VICTORY<span>.</span></a>
+  <p>© 2025 Victory Owoeye. All rights reserved.</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.05 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
