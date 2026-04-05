@@ -43,6 +43,10 @@
   .img-placeholder.wide { aspect-ratio: 16/7; }
   .img-placeholder.portrait { aspect-ratio: 3/4; }
 
+  .img-logo-row { display: grid; grid-template-columns: 30fr 70fr; gap: 1.5rem; margin: 4rem 0; align-items: center; }
+  .img-logo-mark { }
+  .img-wordmark { }
+
   .proj-img { width: 100%; display: block; }
   .proj-img.cover { object-fit: cover; }
   .proj-img.natural { height: auto; }
@@ -99,6 +103,7 @@
     .proj-overview-left { position: static; }
     .img-grid-2 { grid-template-columns: 1fr; }
     .img-grid-3 { grid-template-columns: 1fr 1fr; }
+    .img-logo-row { grid-template-columns: 1fr 1fr; }
     .next-project { padding: 3rem 1.5rem; }
     footer { padding: 2rem 1.5rem; }
   }
@@ -159,12 +164,12 @@
   </div>
 
   <!-- WORDMARK + LOGO — the identity foundation -->
-  <div class="img-grid-2 fade-up">
-    <div>
+  <div class="img-logo-row fade-up">
+    <div class="img-logo-mark">
       <img src="Idan_Logo.png" alt="Idan — Standalone Logo Mark" class="proj-img natural">
       <p class="img-caption">The standalone logo mark — designed to evoke quiet wonder without announcement</p>
     </div>
-    <div>
+    <div class="img-wordmark">
       <img src="Idan_ Wordmark+Logo.png" alt="Idan — Wordmark and Logo" class="proj-img natural">
       <p class="img-caption">Wordmark with logo — the accent over the "a" references the original Yoruba diacritical marking, grounding the identity in its cultural origin</p>
     </div>
