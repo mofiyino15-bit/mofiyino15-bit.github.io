@@ -365,16 +365,16 @@
     overflow: hidden;
   }
 
-  .ps-visual.c1 { background: #141e16; }
-  .ps-visual.c2 { background: #1a0e00; }
-  .ps-visual.c3 { background: #081a08; }
-  .ps-visual.c4 { background: #16091a; }
+  .ps-visual.c1 { background: #e8f0d8; }
+  .ps-visual.c2 { background: #f0e8ff; }
+  .ps-visual.c3 { background: #fde8e8; }
+  .ps-visual.c4 { background: #d6f5e6; }
 
   .ps-bg-num {
     position: absolute;
     font-family: var(--font-display);
     font-size: clamp(180px, 28vw, 400px);
-    color: rgba(0,0,0,0.04);
+    color: rgba(0,0,0,0.06);
     line-height: 1;
     pointer-events: none;
     user-select: none;
@@ -408,7 +408,7 @@
     bottom: 0; left: 0;
     height: 3px;
     width: 0;
-    background: var(--accent);
+    background: var(--brand, var(--accent));
     transition: width 0.5s ease;
   }
 
@@ -442,7 +442,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--brand, var(--accent));
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -455,7 +455,7 @@
     display: inline-block;
     width: 1.5rem;
     height: 1px;
-    background: var(--accent);
+    background: var(--brand, var(--accent));
   }
 
   .ps-title {
@@ -468,7 +468,7 @@
     transition: color 0.3s;
   }
 
-  .project-section:hover .ps-title { color: var(--accent2); }
+  .project-section:hover .ps-title { color: var(--brand, var(--accent2)); }
 
   .ps-desc {
     font-size: 0.95rem;
@@ -838,7 +838,7 @@
 
   <!-- PROJECT 01 -->
   <div class="ps-divider"></div>
-  <div class="project-section fade-up">
+  <div class="project-section fade-up" style="--brand:#d14b64;">
     <div class="ps-visual c1">
       <div class="ps-bg-num">01</div>
       <div class="ps-placeholder">
@@ -862,7 +862,7 @@
 
   <!-- PROJECT 02 -->
   <div class="ps-divider"></div>
-  <div class="project-section flip fade-up">
+  <div class="project-section flip fade-up" style="--brand:#a741ff;">
     <div class="ps-visual c2">
       <div class="ps-bg-num">02</div>
       <div class="ps-placeholder">
@@ -886,7 +886,7 @@
 
   <!-- PROJECT 03 -->
   <div class="ps-divider"></div>
-  <div class="project-section fade-up">
+  <div class="project-section fade-up" style="--brand:#bb1013;">
     <div class="ps-visual c3">
       <div class="ps-bg-num">03</div>
       <div class="ps-placeholder">
@@ -910,7 +910,7 @@
 
   <!-- PROJECT 04 -->
   <div class="ps-divider"></div>
-  <div class="project-section flip fade-up">
+  <div class="project-section flip fade-up" style="--brand:#039344;">
     <div class="ps-visual c4">
       <div class="ps-bg-num">04</div>
       <div class="ps-placeholder">
