@@ -268,34 +268,45 @@
 
 <script>
 
-  const overlay = document.getElementById('lightbox');
-  const lbImg   = document.getElementById('lightbox-img');
-  const lbCap   = document.getElementById('lightbox-caption');
-  const lbClose = document.getElementById('lightbox-close');
+    document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lightbox-img');
+    const lbCap   = document.getElementById('lightbox-caption');
+    const lbClose = document.getElementById('lightbox-close');
 
-  document.querySelectorAll('.proj-img').forEach(img => {
-    img.addEventListener('click', () => {
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      const cap = img.nextElementSibling;
-      lbCap.textContent = (cap && cap.classList.contains('img-caption')) ? cap.textContent : '';
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    if (!overlay) return;
+
+    document.querySelectorAll('.proj-img').forEach(img => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        const cap = img.nextElementSibling;
+        lbCap.textContent = (cap && cap.classList.contains('img-caption')) ? cap.textContent : '';
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
     });
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
+    lbClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   });
 
-  function closeLightbox() {
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    lbImg.src = '';
-  }
-
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
-  lbClose.addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.05 });
+    const obs = new IntersectionObserver((entries) => {
+    entries.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); });
+  }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Fallback: force everything visible after 1.2s in case observer doesn't fire
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+  }, 1200);
 </script>
 
 <div class="lightbox-overlay" id="lightbox">
