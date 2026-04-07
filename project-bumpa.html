@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" href="favicon.svg">
-
 <title>Bumpa. — Victory Owoeye</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --black: #1a1a12; --white: #ede8dc; --accent: #2d4a3e; --accent2: #b5622a;
-    --mid: #1e2219; --muted: #7a7368;
+    --black: #1a1a12; --white: #ede8dc;
+    --accent: #039344; --accent2: #39b54a;
+    --muted: #7a7368;
     --font-display: 'Anton', sans-serif; --font-body: 'Poppins', sans-serif;
   }
   html { scroll-behavior: smooth; }
   body { background: var(--white); color: var(--black); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
 
+  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; background: rgba(237,232,220,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.08); }
   .nav-logo { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.05em; color: var(--black); text-decoration: none; }
   .nav-logo span { color: var(--accent); }
@@ -29,141 +29,149 @@
   /* HERO */
   .proj-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 5rem; position: relative; overflow: hidden; background: var(--white); }
   .proj-hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-display); font-size: clamp(80px, 16vw, 260px); color: rgba(0,0,0,0.04); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: 0.02em; }
-  .proj-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: #039344; font-weight: 300; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-  .proj-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: #039344; }
+  .proj-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 300; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+  .proj-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: var(--accent); }
   .proj-hero h1 { color: var(--black); font-family: var(--font-display); font-size: clamp(72px, 13vw, 170px); line-height: 0.9; letter-spacing: 0.01em; margin-bottom: 1.5rem; }
-  .proj-hero-sub { max-width: 580px; color: rgba(26,26,18,0.65); font-size: 1rem; font-weight: 300; line-height: 1.85; }
+  .proj-hero-sub { max-width: 580px; color: rgba(26,26,18,0.6); font-size: 1rem; font-weight: 300; line-height: 1.85; }
   .proj-hero-meta { position: absolute; right: 3rem; bottom: 5rem; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
   .proj-meta-item { text-align: right; }
   .proj-meta-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
   .proj-meta-value { font-size: 0.88rem; font-weight: 500; color: var(--black); }
 
-  .accent-bar { width: 100%; height: 3px; background: #039344; }
+  .accent-bar { width: 100%; height: 3px; background: var(--accent); }
 
   /* BODY */
   .proj-body { max-width: 1100px; margin: 0 auto; padding: 7rem 3rem; }
 
-  .img-placeholder { width: 100%; background: #1e2219; border: 1px solid rgba(0,0,0,0.09); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.18); font-weight: 300; }
-  .img-placeholder.tall { aspect-ratio: 4/3; }
-  .img-placeholder.wide { aspect-ratio: 16/7; }
-  .img-placeholder.square { aspect-ratio: 1; }
-  .img-placeholder.portrait { aspect-ratio: 3/4; }
-
-  .proj-overview { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; margin-bottom: 7rem; }
-  .proj-overview-left { position: sticky; top: 6rem; }
-  .section-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: #039344; font-weight: 300; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
-  .section-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: #039344; }
-  h2 { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.5rem; color: var(--black); }
-  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .proj-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid #039344; color: #039344; }
-  .body-text { font-size: 0.98rem; color: rgba(26,26,18,0.7); font-weight: 300; line-height: 1.9; }
-  .body-text p + p { margin-top: 1.25rem; }
-
-  .pullquote { border-left: 3px solid #039344; padding: 1.5rem 2rem; margin: 3.5rem 0; background: rgba(3,147,68,0.05); }
-  .pullquote p { font-family: var(--font-display); font-size: clamp(18px, 2.8vw, 30px); line-height: 1.25; color: var(--black); letter-spacing: 0.02em; }
-
+  /* IMAGES */
+  .proj-img { width: 100%; display: block; cursor: zoom-in; transition: opacity 0.2s; }
+  .proj-img:hover { opacity: 0.88; }
+  .img-caption { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 300; margin-top: 0.75rem; }
   .img-full { margin: 4rem 0; }
   .img-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 4rem 0; }
 
-  /* FOUR STATES — the centrepiece of this page */
-  .states-intro { margin-bottom: 2.5rem; }
+  /* 16:9 FRAME — never crops, preserves full image */
+  .frame-169 { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #f0f0e8; }
+  .frame-169 img { width: 100%; height: 100%; object-fit: contain; background: #f0f0e8; }
 
-  .states-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+  /* CHARACTER STATES — horizontal scroll row */
+  .states-scroll-wrap {
     margin: 3rem 0 5rem;
-    border: 1px solid rgba(0,0,0,0.09);
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+  }
+  .states-scroll-wrap::-webkit-scrollbar { height: 3px; }
+  .states-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
+  .states-scroll-wrap::-webkit-scrollbar-thumb { background: var(--accent); }
+
+  .states-scroll-inner {
+    display: grid;
+    grid-template-columns: repeat(4, calc(50vw - 3rem));
+    gap: 1.5rem;
+    width: max-content;
   }
 
   .state-card {
-    padding: 2.5rem 2rem;
-    border-right: 1px solid rgba(0,0,0,0.09);
-    position: relative;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
     overflow: hidden;
-    transition: background 0.3s;
+    position: relative;
   }
-  .state-card:last-child { border-right: none; }
-  .state-card:hover { background: rgba(0,0,0,0.035); }
-
   .state-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    transition: opacity 0.3s;
+    z-index: 1;
   }
-  .state-card.assisted::before { background: #4a9eff; }
-  .state-card.neutral::before  { background: var(--muted); }
-  .state-card.error::before    { background: #e84444; }
-  .state-card.success::before  { background: #3fc77a; }
+  .state-card.neutral::before  { background: #7a7368; }
+  .state-card.assisted::before { background: #039344; }
+  .state-card.excited::before  { background: #39b54a; }
+  .state-card.error::before    { background: #bb1013; }
 
-  .state-label {
+  .state-img-wrap { width: 100%; aspect-ratio: 16/9; background: #f4f2ec; }
+  .state-img-wrap img { width: 100%; height: 100%; object-fit: contain; background: #f4f2ec; cursor: zoom-in; transition: opacity 0.2s; }
+  .state-img-wrap img:hover { opacity: 0.88; }
+
+  .state-info { padding: 1.5rem; }
+  .state-name {
     font-family: var(--font-display);
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.35rem;
   }
-  .state-card.assisted .state-label { color: #4a9eff; }
-  .state-card.neutral  .state-label { color: rgba(26,26,18,0.65); }
-  .state-card.error    .state-label { color: #e84444; }
-  .state-card.success  .state-label { color: #3fc77a; }
+  .state-card.neutral  .state-name { color: #7a7368; }
+  .state-card.assisted .state-name { color: #039344; }
+  .state-card.excited  .state-name { color: #39b54a; }
+  .state-card.error    .state-name { color: #bb1013; }
 
-  .state-use {
-    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--muted); font-weight: 300; margin-bottom: 1.5rem;
-  }
+  .state-use { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.85rem; }
+  .state-desc { font-size: 0.82rem; color: rgba(26,26,18,0.6); font-weight: 300; line-height: 1.65; }
 
-  .state-img {
-    width: 100%; aspect-ratio: 1;
-    background: #1e2219;
-    border: 1px solid rgba(0,0,0,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(0,0,0,0.14); margin-bottom: 1.25rem;
-  }
+  /* SCROLL HINT */
+  .scroll-hint { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+  .scroll-hint::after { content: '→'; }
 
-  .state-desc { font-size: 0.8rem; color: rgba(26,26,18,0.6); font-weight: 300; line-height: 1.65; }
+  /* OVERVIEW */
+  .proj-overview { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start; margin-bottom: 7rem; }
+  .proj-overview-left { position: sticky; top: 6rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 300; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .section-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
+  h2 { font-family: var(--font-display); font-size: clamp(34px, 4.5vw, 60px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1.5rem; color: var(--black); }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .proj-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border: 1px solid var(--accent); color: var(--accent); }
+  .body-text { font-size: 0.98rem; color: rgba(26,26,18,0.68); font-weight: 300; line-height: 1.9; }
+  .body-text p + p { margin-top: 1.25rem; }
 
-  /* IMPACT ROW */
-  .impact-row {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; margin: 3rem 0;
-  }
-  .impact-card {
-    padding: 2rem 1.75rem; background: #1e2219;
-    border: 1px solid rgba(0,0,0,0.09);
-    position: relative; overflow: hidden;
-  }
+  .pullquote { border-left: 3px solid var(--accent); padding: 1.5rem 2rem; margin: 3.5rem 0; background: rgba(3,147,68,0.05); }
+  .pullquote p { font-family: var(--font-display); font-size: clamp(18px, 2.8vw, 30px); line-height: 1.25; color: var(--black); letter-spacing: 0.02em; }
+
+  /* IMPACT CARDS */
+  .impact-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0; }
+  .impact-card { padding: 2rem 1.75rem; background: rgba(3,147,68,0.04); border: 1px solid rgba(3,147,68,0.15); position: relative; overflow: hidden; }
   .impact-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent2); transition: width 0.4s; }
   .impact-card:hover::after { width: 100%; }
-  .impact-card h4 { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.06em; color: #39b54a; margin-bottom: 0.6rem; }
+  .impact-card h4 { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.6rem; }
   .impact-card p { font-size: 0.82rem; color: var(--muted); font-weight: 300; line-height: 1.65; }
 
-  .section-divider { width: 100%; height: 1px; background: rgba(0,0,0,0.09); margin: 6rem 0; }
+  /* FULL SPREAD SECTION */
+  .spreads { display: flex; flex-direction: column; gap: 5rem; margin: 3rem 0; }
+  .spread-item {}
+  .spread-label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 300; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+  .spread-label::before { content: ''; display: inline-block; width: 1.5rem; height: 1px; background: var(--accent); }
+  .spread-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 36px); margin-bottom: 1.25rem; color: var(--black); }
+  .spread-desc { font-size: 0.9rem; color: rgba(26,26,18,0.62); font-weight: 300; line-height: 1.8; max-width: 600px; margin-bottom: 1.5rem; }
+
+  .section-divider { width: 100%; height: 1px; background: rgba(0,0,0,0.08); margin: 6rem 0; }
 
   /* NEXT */
-  .next-project { background: var(--accent); padding: 5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; border-top: 1px solid rgba(0,0,0,0.08); }
+  .next-project { background: var(--accent); padding: 5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; border-top: 1px solid rgba(0,0,0,0.05); }
   .next-label { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(237,232,220,0.65); margin-bottom: 0.6rem; }
   .next-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 64px); line-height: 1; color: var(--white); transition: color 0.3s; }
   .next-link { text-decoration: none; color: var(--black); }
-  .next-link:hover .next-title { color: var(--accent2); }
+  .next-link:hover .next-title { color: var(--white); opacity: 0.75; }
   .next-arrow { font-size: 2.5rem; color: var(--white); }
 
   footer { background: var(--black); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(0,0,0,0.08); }
-  .footer-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--black); text-decoration: none; }
+  .footer-logo { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); text-decoration: none; }
   .footer-logo span { color: var(--accent); }
   footer p { color: var(--muted); font-size: 0.8rem; font-weight: 300; }
 
+  /* LIGHTBOX */
+  .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(26,26,18,0.96); align-items: center; justify-content: center; cursor: zoom-out; }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-img { max-width: 96vw; max-height: 94vh; object-fit: contain; display: block; cursor: default; }
+  .lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-size: 2rem; color: #ede8dc; cursor: pointer; background: none; border: none; line-height: 1; opacity: 0.7; transition: opacity 0.2s; z-index: 1001; font-family: sans-serif; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-caption { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,220,0.55); font-family: Poppins, sans-serif; white-space: nowrap; }
+
+  /* FADE */
   .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-up.visible { opacity: 1; transform: none; }
 
-  @media (max-width: 1024px) {
-    .states-grid { grid-template-columns: 1fr 1fr; }
-    .state-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
-    .state-card:nth-child(odd) { border-right: 1px solid rgba(0,0,0,0.09); }
-    .state-card:last-child { border-bottom: none; }
-  }
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .proj-hero { padding: 0 1.5rem 4rem; }
@@ -173,24 +181,10 @@
     .proj-overview-left { position: static; }
     .img-grid-2 { grid-template-columns: 1fr; }
     .impact-row { grid-template-columns: 1fr; }
+    .states-scroll-inner { grid-template-columns: repeat(4, 80vw); }
     .next-project { padding: 3rem 1.5rem; }
     footer { padding: 2rem 1.5rem; }
   }
-  @media (max-width: 600px) {
-    .states-grid { grid-template-columns: 1fr; }
-    .state-card { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
-    .state-card:nth-child(odd) { border-right: none; }
-  }
-
-  .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(26,26,18,0.96); align-items: center; justify-content: center; cursor: zoom-out; }
-  .lightbox-overlay.active { display: flex; }
-  .lightbox-img { max-width: 92vw; max-height: 92vh; object-fit: contain; display: block; cursor: default; }
-  .lightbox-close { position: fixed; top: 1.5rem; right: 2rem; font-size: 2rem; color: #ede8dc; cursor: pointer; background: none; border: none; line-height: 1; opacity: 0.7; transition: opacity 0.2s; z-index: 1001; font-family: sans-serif; }
-  .lightbox-close:hover { opacity: 1; }
-  .lightbox-caption { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(237,232,220,0.55); font-family: Poppins, sans-serif; white-space: nowrap; }
-  .proj-img { cursor: zoom-in; transition: opacity 0.2s; }
-  .proj-img:hover { opacity: 0.88; }
-
 </style>
 </head>
 <body>
@@ -200,6 +194,7 @@
   <a href="index.html#portfolio" class="nav-back">← All Projects</a>
 </nav>
 
+<!-- HERO -->
 <section class="proj-hero">
   <div class="proj-hero-bg">BUMPA.</div>
   <div class="proj-eyebrow">Illustration · Character Design · UX</div>
@@ -212,11 +207,11 @@
     </div>
     <div class="proj-meta-item">
       <div class="proj-meta-label">States</div>
-      <div class="proj-meta-value">4 — Assisted, Neutral, Error, Success</div>
+      <div class="proj-meta-value">Neutral · Assisted · Excited · Error</div>
     </div>
     <div class="proj-meta-item">
       <div class="proj-meta-label">Platform</div>
-      <div class="proj-meta-value">E-Commerce / Merchant App</div>
+      <div class="proj-meta-value">E-Commerce · Merchant App</div>
     </div>
   </div>
 </section>
@@ -240,74 +235,149 @@
     <div class="body-text">
       <p>For Bumpa, I created an original robotic mascot and developed it into a four-state character system — each state aligned to a specific product moment in the merchant's journey.</p>
       <p>The character wasn't designed to be decorative. It was designed to function as a feedback layer — one that made the platform feel more supportive, human, and confidence-building at the exact moments merchants needed it most.</p>
-      <p>By aligning each expression with key product states, the mascot became a silent guide that communicated tone and direction without a single word of copy changing.</p>
+      <p>By aligning each expression with key product states, the mascot became a silent guide that communicated tone and direction without a single line of copy changing.</p>
     </div>
   </div>
 
-  <!-- HERO IMAGE -->
+  <!-- HERO IMAGE — man + machine -->
   <div class="img-full fade-up">
-    <div class="img-placeholder wide">Mascot Character Sheet — Image Coming Soon</div>
+    <div class="frame-169">
+      <img src="15.png" alt="Bumpa — Interaction between man and machine" class="proj-img">
+    </div>
+    <p class="img-caption">The goal of the project — a synergistic interaction between man and machine</p>
   </div>
 
   <div class="pullquote fade-up">
     <p>The character became a feedback layer that made the platform feel more supportive, human, and confidence-building.</p>
   </div>
 
-  <!-- FOUR STATES -->
-  <div class="states-intro fade-up">
-    <div class="section-label">The System</div>
-    <h2>FOUR STATES. ONE CHARACTER.</h2>
-    <p class="body-text" style="max-width: 640px;">Each state was designed to appear at a specific product moment — not randomly, but with intention. The expressions were built to reduce friction, reward progress, and keep merchants moving forward.</p>
-  </div>
-
-  <div class="states-grid fade-up">
-
-    <div class="state-card assisted">
-      <div class="state-label">ASSISTED</div>
-      <div class="state-use">Onboarding · Tips</div>
-      <div class="state-img">Character State — Image Coming Soon</div>
-      <p class="state-desc">Appears during onboarding flows and contextual tips. The character is attentive and forward-leaning — communicating that help is present and the merchant is not alone.</p>
-    </div>
-
-    <div class="state-card neutral">
-      <div class="state-label">NEUTRAL</div>
-      <div class="state-use">Default Brand Presence</div>
-      <div class="state-img">Character State — Image Coming Soon</div>
-      <p class="state-desc">The resting state. Calm, composed, present. Used when the platform is idle or during general navigation — establishing the mascot as a steady brand constant.</p>
-    </div>
-
-    <div class="state-card error">
-      <div class="state-label">ERROR</div>
-      <div class="state-use">Recoverable Friction Moments</div>
-      <div class="state-img">Character State — Image Coming Soon</div>
-      <p class="state-desc">Designed specifically for recoverable errors — not catastrophic failures. The character reads as momentarily stuck, not defeated. The visual tone says: this is fixable, and I'm still here.</p>
-    </div>
-
-    <div class="state-card success">
-      <div class="state-label">SUCCESS</div>
-      <div class="state-use">Progress Celebration</div>
-      <div class="state-img">Character State — Image Coming Soon</div>
-      <p class="state-desc">Triggered by milestone moments — a completed sale, a finished setup, a goal reached. The character celebrates with the merchant, making progress feel acknowledged and earned.</p>
-    </div>
-
-  </div>
-
-  <!-- IN-CONTEXT MOCKUPS -->
+  <!-- CHARACTER SHEET -->
   <div class="fade-up">
-    <div class="section-label">In Context</div>
-    <h2>THE CHARACTER IN THE PRODUCT</h2>
+    <div class="section-label">Character Design</div>
+    <h2>THE MASCOT</h2>
   </div>
-
-  <div class="img-grid-2 fade-up">
-    <div class="img-placeholder tall">Onboarding Screen (Assisted) — Image Coming Soon</div>
-    <div class="img-placeholder tall">Error State Screen — Image Coming Soon</div>
-    <div class="img-placeholder tall">Success Milestone Screen — Image Coming Soon</div>
-    <div class="img-placeholder tall">Neutral Dashboard Presence — Image Coming Soon</div>
+  <div class="img-full fade-up">
+    <div class="frame-169">
+      <img src="16.png" alt="Bumpa — Full character sheet" class="proj-img">
+    </div>
+    <p class="img-caption">Full character sheet — the mascot in all its expressions and construction</p>
   </div>
 
   <div class="section-divider"></div>
 
-  <!-- IMPACT -->
+  <!-- FOUR STATES — horizontal scroll -->
+  <div class="fade-up">
+    <div class="section-label">The System</div>
+    <h2>FOUR STATES. ONE CHARACTER.</h2>
+    <p class="body-text" style="max-width:640px; margin-bottom: 2rem;">Each state was designed to appear at a specific product moment — not randomly, but with intention. The expressions were built to reduce friction, reward progress, and keep merchants moving forward.</p>
+    <div class="scroll-hint">Scroll to see all states</div>
+  </div>
+
+  <div class="states-scroll-wrap fade-up">
+    <div class="states-scroll-inner">
+
+      <div class="state-card neutral">
+        <div class="state-img-wrap">
+          <img src="Bumpa Mascot_Final.png" alt="Bumpa — Neutral state">
+        </div>
+        <div class="state-info">
+          <div class="state-name">NEUTRAL</div>
+          <div class="state-use">Default Brand Presence</div>
+          <p class="state-desc">The resting state. Calm, composed, present. Used when the platform is idle or during general navigation — establishing the mascot as a steady brand constant that merchants grow familiar with over time.</p>
+        </div>
+      </div>
+
+      <div class="state-card assisted">
+        <div class="state-img-wrap">
+          <img src="Bumpa Mascot_Final(A).png" alt="Bumpa — Assisted state">
+        </div>
+        <div class="state-info">
+          <div class="state-name">ASSISTED</div>
+          <div class="state-use">Onboarding · Tips</div>
+          <p class="state-desc">Appears during onboarding flows and contextual tips. The character is attentive and forward-leaning — communicating that help is present and the merchant is not navigating alone.</p>
+        </div>
+      </div>
+
+      <div class="state-card excited">
+        <div class="state-img-wrap">
+          <img src="Bumpa Mascot_Final(E).png" alt="Bumpa — Excited state">
+        </div>
+        <div class="state-info">
+          <div class="state-name">EXCITED</div>
+          <div class="state-use">Progress · Celebration</div>
+          <p class="state-desc">Triggered by milestone moments — a completed sale, a finished setup, a goal reached. The character celebrates with the merchant, making progress feel acknowledged and genuinely earned.</p>
+        </div>
+      </div>
+
+      <div class="state-card error">
+        <div class="state-img-wrap">
+          <img src="Bumpa Mascot_Final(Err).png" alt="Bumpa — Error state">
+        </div>
+        <div class="state-info">
+          <div class="state-name">ERROR</div>
+          <div class="state-use">Recoverable Friction Moments</div>
+          <p class="state-desc">Designed specifically for recoverable errors. The character reads as momentarily stuck, not defeated. The visual tone communicates clearly: this is fixable, and I am still here with you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- FULL STATE SPREADS -->
+  <div class="fade-up">
+    <div class="section-label">Use Cases</div>
+    <h2>THE STATES IN CONTEXT</h2>
+  </div>
+
+  <div class="spreads">
+
+    <div class="spread-item fade-up">
+      <div class="spread-label">State 01</div>
+      <div class="spread-title">NEUTRAL STATE</div>
+      <p class="spread-desc">The default presence of the mascot across the platform — calm, consistent, and familiar. Present without demanding attention.</p>
+      <div class="frame-169">
+        <img src="17.png" alt="Bumpa — Neutral state full spread" class="proj-img">
+      </div>
+      <p class="img-caption">Full spread — neutral state and its use cases across the product</p>
+    </div>
+
+    <div class="spread-item fade-up">
+      <div class="spread-label">State 02</div>
+      <div class="spread-title">EXCITED STATE</div>
+      <p class="spread-desc">The celebration layer — activated at milestone moments to acknowledge the merchant's progress and make success feel personal.</p>
+      <div class="frame-169">
+        <img src="18.png" alt="Bumpa — Excited state full spread" class="proj-img">
+      </div>
+      <p class="img-caption">Full spread — excited state and its use cases across the product</p>
+    </div>
+
+    <div class="spread-item fade-up">
+      <div class="spread-label">State 03</div>
+      <div class="spread-title">ERROR STATE</div>
+      <p class="spread-desc">The recovery layer — designed to soften friction without hiding it, keeping merchants confident that errors are temporary and solvable.</p>
+      <div class="frame-169">
+        <img src="19.png" alt="Bumpa — Error state full spread" class="proj-img">
+      </div>
+      <p class="img-caption">Full spread — error state and its use cases across the product</p>
+    </div>
+
+    <div class="spread-item fade-up">
+      <div class="spread-label">State 04</div>
+      <div class="spread-title">ASSISTED STATE</div>
+      <p class="spread-desc">The guidance layer — present during onboarding and contextual tips, signalling that the platform is attentive and the merchant is supported.</p>
+      <div class="frame-169">
+        <img src="20.png" alt="Bumpa — Assisted state full spread" class="proj-img">
+      </div>
+      <p class="img-caption">Full spread — assisted state and its use cases across the product</p>
+    </div>
+
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- WHY IT WORKS -->
   <div class="fade-up">
     <div class="section-label">Design Thinking</div>
     <h2>WHY THIS WORKS</h2>
@@ -316,7 +386,7 @@
   <div class="impact-row fade-up">
     <div class="impact-card">
       <h4>FUNCTIONAL ILLUSTRATION</h4>
-      <p>Each state is tied to a real product moment. The character is not decoration — it is part of the product's communication layer, designed to reduce friction and build confidence.</p>
+      <p>Each state is tied to a real product moment. The character is not decoration — it is part of the platform's communication layer, designed to reduce friction and build confidence at every touchpoint.</p>
     </div>
     <div class="impact-card">
       <h4>EMOTIONAL ALIGNMENT</h4>
@@ -324,7 +394,7 @@
     </div>
     <div class="impact-card">
       <h4>BRAND CONSISTENCY</h4>
-      <p>A single character across all states creates visual consistency. Merchants encounter the same face throughout their journey, building familiarity and trust over time.</p>
+      <p>A single character across all states creates visual consistency. Merchants encounter the same face throughout their journey, building the kind of familiarity that trust is made from.</p>
     </div>
   </div>
 
@@ -344,7 +414,7 @@
 
 </div>
 
-<!-- NEXT PROJECT — loops back to first -->
+<!-- NEXT PROJECT -->
 <div class="next-project">
   <div>
     <div class="next-label">Back to First Project</div>
@@ -358,9 +428,15 @@
   <p>© 2025 Victory Owoeye. All rights reserved.</p>
 </footer>
 
-<script>
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">&times;</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
 
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('lightbox');
     const lbImg   = document.getElementById('lightbox-img');
     const lbCap   = document.getElementById('lightbox-caption');
@@ -368,12 +444,13 @@
 
     if (!overlay) return;
 
-    document.querySelectorAll('.proj-img').forEach(img => {
+    document.querySelectorAll('.proj-img, .state-img-wrap img').forEach(img => {
       img.addEventListener('click', () => {
         lbImg.src = img.src;
         lbImg.alt = img.alt;
-        const cap = img.nextElementSibling;
-        lbCap.textContent = (cap && cap.classList.contains('img-caption')) ? cap.textContent : '';
+        const cap = img.closest('.img-full, .spread-item, .img-grid-2 > div');
+        const capEl = cap ? cap.querySelector('.img-caption') : null;
+        lbCap.textContent = capEl ? capEl.textContent : '';
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
       });
@@ -390,22 +467,14 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
   });
 
-    const obs = new IntersectionObserver((entries) => {
+  const obs = new IntersectionObserver((entries) => {
     entries.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); });
   }, { threshold: 0, rootMargin: '0px 0px -50px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-  // Fallback: force everything visible after 1.2s in case observer doesn't fire
   setTimeout(() => {
     document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
   }, 1200);
 </script>
-
-<div class="lightbox-overlay" id="lightbox">
-  <button class="lightbox-close" id="lightbox-close">&times;</button>
-  <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-</div>
-
 </body>
 </html>
