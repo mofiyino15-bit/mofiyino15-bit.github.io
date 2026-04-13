@@ -750,6 +750,20 @@
   @media (max-width: 500px) {
     nav ul { display: none; }
   }
+
+  .ps-visual-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease, opacity 0.3s;
+    cursor: zoom-in;
+    z-index: 1;
+  }
+  .project-section:hover .ps-visual-img { transform: scale(1.03); }
+
 </style>
 </head>
 <body>
@@ -843,7 +857,7 @@
   <div class="ps-divider"></div>
   <div class="project-section fade-up" style="--brand:#d14b64;">
     <div class="ps-visual c1">
-      <img src="Ife+Co single Instagram Post.png" alt="IFE+CO Logo" style="position:absolute;top:2rem;left:2rem;width:clamp(80px,12%,140px);height:auto;object-fit:contain;z-index:2;">
+      <img src="ife+Co_Hero.jpg" alt="Ife+Co — Brand Hero" class="ps-visual-img" id="lb-ife">
       <div class="ps-accent-line"></div>
     </div>
     <div class="ps-content">
@@ -864,7 +878,7 @@
   <div class="ps-divider"></div>
   <div class="project-section flip fade-up" style="--brand:#a741ff;">
     <div class="ps-visual c2">
-      <img src="Idan_Logo.png" alt="IDAN Logo" style="position:absolute;top:2rem;left:2rem;width:clamp(80px,12%,140px);height:auto;object-fit:contain;z-index:2;">
+      <img src="Idan Hero_F.png" alt="Idan — Brand Hero" class="ps-visual-img" id="lb-idan">
       <div class="ps-accent-line"></div>
     </div>
     <div class="ps-content">
@@ -885,7 +899,7 @@
   <div class="ps-divider"></div>
   <div class="project-section fade-up" style="--brand:#bb1013;">
     <div class="ps-visual c3">
-      <img src="GoMyCode Logo.png" alt="GoMyCode Logo" style="position:absolute;top:2rem;left:2rem;width:clamp(80px,12%,140px);height:auto;object-fit:contain;z-index:2;">
+      <img src="Go My Code Hero.jpg" alt="GoMyCode — Brand Hero" class="ps-visual-img" id="lb-gmc">
       <div class="ps-accent-line"></div>
     </div>
     <div class="ps-content">
@@ -906,7 +920,7 @@
   <div class="ps-divider"></div>
   <div class="project-section flip fade-up" style="--brand:#039344;">
     <div class="ps-visual c4">
-      <img src="Bumpa Logo.png" alt="Bumpa Logo" style="position:absolute;top:2rem;left:2rem;width:clamp(80px,12%,140px);height:auto;object-fit:contain;z-index:2;">
+      <img src="Bumpa Hro .jpg" alt="Bumpa — Brand Hero" class="ps-visual-img" id="lb-bumpa">
       <div class="ps-accent-line"></div>
     </div>
     <div class="ps-content">
@@ -988,6 +1002,31 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lightbox-img');
+    const lbClose = document.getElementById('lightbox-close');
+    if (!overlay) return;
+    document.querySelectorAll('.ps-visual-img').forEach(img => {
+      img.addEventListener('click', e => {
+        e.stopPropagation();
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    function closeLightbox() {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeLightbox(); });
+    lbClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  });
+
   // Fade-up on scroll
     const obs = new IntersectionObserver((entries) => {
     entries.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); });
@@ -1007,5 +1046,11 @@
     msg.textContent = "Thanks! This form needs a backend to send emails — for now, reach me directly at fiyiin@yahoo.com.";
   }
 </script>
+
+<div class="lightbox-overlay" id="lightbox" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(26,26,18,0.96);align-items:center;justify-content:center;cursor:zoom-out;">
+  <button id="lightbox-close" style="position:fixed;top:1.5rem;right:2rem;font-size:2rem;color:#ede8dc;cursor:pointer;background:none;border:none;line-height:1;opacity:0.7;z-index:1001;font-family:sans-serif;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:96vw;max-height:94vh;object-fit:contain;display:block;cursor:default;">
+</div>
+
 </body>
 </html>

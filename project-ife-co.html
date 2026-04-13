@@ -119,6 +119,22 @@
   .proj-img { cursor: zoom-in; transition: opacity 0.2s; }
   .proj-img:hover { opacity: 0.88; }
 
+
+  .proj-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    opacity: 0.18;
+    cursor: zoom-in;
+    transition: opacity 0.3s;
+  }
+  .proj-hero-img:hover { opacity: 0.28; }
+  .proj-hero > *:not(.proj-hero-img) { position: relative; z-index: 1; }
+
 </style>
 </head>
 <body>
@@ -129,6 +145,7 @@
 </nav>
 
 <section class="proj-hero">
+  <img src="ife+Co_Hero.jpg" alt="Hero image" class="proj-hero-img" id="proj-hero-img">
   <div class="proj-hero-bg">IFE+CO</div>
   <div class="proj-eyebrow">Brand Identity · Social Media</div>
   <h1>IFE+CO</h1>
@@ -278,6 +295,16 @@
     const lbClose = document.getElementById('lightbox-close');
 
     if (!overlay) return;
+
+    const heroImg = document.getElementById('proj-hero-img');
+    if (heroImg) {
+      heroImg.addEventListener('click', () => {
+        lbImg.src = heroImg.src;
+        lbImg.alt = heroImg.alt;
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    }
 
     document.querySelectorAll('.proj-img').forEach(img => {
       img.addEventListener('click', () => {
