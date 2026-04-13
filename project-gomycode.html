@@ -26,16 +26,16 @@
   .nav-back { display: flex; align-items: center; gap: 0.6rem; color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 300; transition: color 0.2s; }
   .nav-back:hover { color: var(--black); }
 
-  .proj-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 3rem 5rem; position: relative; overflow: hidden; background: var(--white); }
-  .proj-hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-display); font-size: clamp(60px, 10vw, 160px); color: rgba(0,0,0,0.035); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: 0.02em; }
+
+
   .proj-eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: #bb1013; font-weight: 300; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
   .proj-eyebrow::before { content: ''; display: inline-block; width: 2rem; height: 1px; background: #bb1013; }
-  .proj-hero h1 { color: var(--black); font-family: var(--font-display); font-size: clamp(52px, 9vw, 130px); line-height: 0.9; letter-spacing: 0.01em; margin-bottom: 1.5rem; }
-  .proj-hero-sub { max-width: 560px; color: rgba(26,26,18,0.6); font-size: 1rem; font-weight: 300; line-height: 1.85; }
-  .proj-hero-meta { position: absolute; right: 3rem; bottom: 5rem; display: flex; flex-direction: column; gap: 1.5rem; align-items: flex-end; }
-  .proj-meta-item { text-align: right; }
-  .proj-meta-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
-  .proj-meta-value { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+
+
+
+
+
+
 
   .accent-bar { width: 100%; height: 3px; background: #bb1013; }
 
@@ -95,8 +95,8 @@
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .proj-hero { padding: 0 1.5rem 4rem; }
-    .proj-hero-meta { display: none; }
+  
+  
     .proj-body { padding: 4rem 1.5rem; }
     .proj-overview { grid-template-columns: 1fr; gap: 2.5rem; }
     .proj-overview-left { position: static; }
@@ -117,6 +117,67 @@
   .proj-img { cursor: zoom-in; transition: opacity 0.2s; }
   .proj-img:hover { opacity: 0.88; }
 
+
+
+
+
+
+
+  /* HERO — image first, then text */
+  .proj-hero {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5rem; /* nav offset */
+    background: var(--white);
+  }
+  .proj-hero-image-wrap {
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    cursor: zoom-in;
+    position: relative;
+  }
+  .proj-hero-image-wrap img {
+    width: 100%;
+    height: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    object-position: center top;
+    display: block;
+    transition: opacity 0.2s;
+  }
+  .proj-hero-image-wrap:hover img { opacity: 0.92; }
+  .proj-hero-text {
+    padding: 3.5rem 3rem 4rem;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+  .proj-hero-text-left {}
+  .proj-hero-text-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-end;
+    text-align: right;
+  }
+  .proj-hero-bg { display: none; }
+  .proj-hero h1 { color: var(--black); font-family: var(--font-display); font-size: clamp(52px, 8vw, 120px); line-height: 0.9; letter-spacing: 0.01em; margin-bottom: 1rem; }
+  .proj-hero-sub { max-width: 480px; color: rgba(26,26,18,0.6); font-size: 0.95rem; font-weight: 300; line-height: 1.85; }
+  .proj-hero-meta { position: static; display: flex; flex-direction: column; gap: 1.25rem; align-items: flex-end; }
+  .proj-meta-item { text-align: right; }
+  .proj-meta-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .proj-meta-value { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+  @media (max-width: 900px) {
+    .proj-hero-text { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem 3rem; }
+    .proj-hero-text-right { align-items: flex-start; text-align: left; }
+    .proj-hero-meta { align-items: flex-start; }
+  }
+
 </style>
 </head>
 <body>
@@ -127,22 +188,23 @@
 </nav>
 
 <section class="proj-hero">
-  <div class="proj-hero-bg">GOMYCODE</div>
-  <div class="proj-eyebrow">Graphic Design · Content Strategy</div>
-  <h1>GOMYCODE</h1>
-  <p class="proj-hero-sub">A strategic content evolution built on hierarchy, consistency, and seasonal flexibility — extending an existing brand system without compromising recognition.</p>
-  <div class="proj-hero-meta">
-    <div class="proj-meta-item">
+  <div class="proj-hero-image-wrap" id="proj-hero-wrap">
+    <img src="Go My Code Hero.jpg" alt="GoMyCode — Brand Hero" id="proj-hero-img">
+  </div>
+  <div class="proj-hero-text">
+    <div class="proj-hero-text-left">
+      <div class="proj-eyebrow">Graphic Design · Content Strategy</div>
+      <h1>GOMYCODE</h1>
+      <p class="proj-hero-sub">A strategic content evolution built on hierarchy, consistency, and seasonal flexibility — extending an existing brand system without compromising recognition.</p>
+    </div>
+    <div class="proj-hero-text-right">
+      <div class="proj-hero-meta"><div class="proj-meta-item">
       <div class="proj-meta-label">Type</div>
-      <div class="proj-meta-value">Brand Extension</div>
-    </div>
-    <div class="proj-meta-item">
+      <div class="proj-meta-value">Brand Extension</div><div class="proj-meta-item">
       <div class="proj-meta-label">Focus</div>
-      <div class="proj-meta-value">Digital Content Design</div>
-    </div>
-    <div class="proj-meta-item">
+      <div class="proj-meta-value">Digital Content Design</div><div class="proj-meta-item">
       <div class="proj-meta-label">Goal</div>
-      <div class="proj-meta-value">Scroll-Stopping Power</div>
+      <div class="proj-meta-value">Scroll-Stopping Power</div></div>
     </div>
   </div>
 </section>
@@ -256,6 +318,16 @@
     const lbClose = document.getElementById('lightbox-close');
 
     if (!overlay) return;
+
+    const heroImg = document.getElementById('proj-hero-img');
+    if (heroImg) {
+      heroImg.addEventListener('click', () => {
+        lbImg.src = heroImg.src;
+        lbImg.alt = heroImg.alt;
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    }
 
     document.querySelectorAll('.proj-img').forEach(img => {
       img.addEventListener('click', () => {
