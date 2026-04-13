@@ -134,41 +134,7 @@
     padding-top: 5rem; /* nav offset */
     background: var(--white);
   }
-  .proj-hero-image-wrap {
-    width: 100%;
-    max-height: 90vh;
-    overflow: hidden;
-    cursor: zoom-in;
-    position: relative;
-  }
-  .proj-hero-image-wrap img {
-    width: 100%;
-    height: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-    object-position: center top;
-    display: block;
-    transition: opacity 0.2s;
-  }
-  .proj-hero-image-wrap:hover img { opacity: 0.92; }
-  .proj-hero-text {
-    padding: 3.5rem 3rem 4rem;
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: end;
-  }
   .proj-hero-text-left {}
-  .proj-hero-text-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    align-items: flex-end;
-    text-align: right;
-  }
   .proj-hero-bg { display: none; }
   .proj-hero h1 { color: var(--black); font-family: var(--font-display); font-size: clamp(52px, 8vw, 120px); line-height: 0.9; letter-spacing: 0.01em; margin-bottom: 1rem; }
   .proj-hero-sub { max-width: 480px; color: rgba(26,26,18,0.6); font-size: 0.95rem; font-weight: 300; line-height: 1.85; }
@@ -177,10 +143,24 @@
   .proj-meta-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
   .proj-meta-value { font-size: 0.88rem; font-weight: 500; color: var(--black); }
   @media (max-width: 900px) {
-    .proj-hero-text { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem 3rem; }
-    .proj-hero-text-right { align-items: flex-start; text-align: left; }
     .proj-hero-meta { align-items: flex-start; }
   }
+
+
+  .proj-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    opacity: 0.28;
+    cursor: zoom-in;
+    transition: opacity 0.3s;
+  }
+  .proj-hero-img:hover { opacity: 0.38; }
+  .proj-hero > *:not(.proj-hero-img) { position: relative; z-index: 1; }
 
 </style>
 </head>
@@ -192,24 +172,18 @@
 </nav>
 
 <section class="proj-hero">
-  <div class="proj-hero-image-wrap" id="proj-hero-wrap">
-    <img src="Idan Hero_F.png" alt="Idan — Brand Hero" id="proj-hero-img">
-  </div>
-  <div class="proj-hero-text">
-    <div class="proj-hero-text-left">
-      <div class="proj-eyebrow">Brand Identity · Luxury</div>
-      <h1>IDAN</h1>
-      <p class="proj-hero-sub">A regal feminine identity built through chromatic symbolism and hierarchy control — for a gift experience that feels magical, luxurious, and deeply intentional.</p>
-    </div>
-    <div class="proj-hero-text-right">
-      <div class="proj-hero-meta"><div class="proj-meta-item">
-      <div class="proj-meta-label">Type</div>
-      <div class="proj-meta-value">Luxury Brand Identity</div><div class="proj-meta-item">
-      <div class="proj-meta-label">Client</div>
-      <div class="proj-meta-value">Women's Gift Service</div><div class="proj-meta-item">
-      <div class="proj-meta-label">Name Origin</div>
-      <div class="proj-meta-value">Yoruba — "Magic"</div></div>
-    </div>
+  <img src="Idan Hero_F.png" alt="Hero image" class="proj-hero-img" id="proj-hero-img">
+  <div class="proj-hero-bg">IDAN</div>
+  <div class="proj-eyebrow">Brand Identity · Luxury</div>
+  <h1>IDAN</h1>
+  <p class="proj-hero-sub">A regal feminine identity built through chromatic symbolism and hierarchy control — for a gift experience that feels magical, luxurious, and deeply intentional.</p>
+  <div class="proj-hero-meta">
+    <div class="proj-meta-item"><div class="proj-meta-label">Type</div>
+      <div class="proj-meta-value">Luxury Brand Identity</div>
+    <div class="proj-meta-item"><div class="proj-meta-label">Client</div>
+      <div class="proj-meta-value">Women's Gift Service</div>
+    <div class="proj-meta-item"><div class="proj-meta-label">Name Origin</div>
+      <div class="proj-meta-value">Yoruba — "Magic"</div>
   </div>
 </section>
 
